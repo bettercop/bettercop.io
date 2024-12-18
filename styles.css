@@ -16,6 +16,7 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     overflow: hidden;
+    flex-wrap: wrap; /* Mobil cihazlarda daha yaxşı uyğunlaşma üçün əlavə edildi */
 }
 
 /* Sol tərəf (Məlumat) */
@@ -53,7 +54,32 @@ body {
     background-color: #ffffff;
 }
 
+/* Embed elementinin görünüşü */
 embed {
     border: 1px solid #ddd;
     border-radius: 4px;
+}
+
+/* Mobil uyğunlaşdırma */
+@media (max-width: 768px) {
+    .konteyner {
+        flex-direction: column; /* Mobil cihazlarda, sol və sağ hissə alt-üst olsun */
+    }
+
+    .sol {
+        flex: 1 1 100%; /* Sol tərəf tam genişlikdə olsun */
+        border-right: none; /* Sağdakı sərhəd silinsin */
+        border-bottom: 2px solid #ddd; /* Sol tərəfdən sonra alt sərhəd əlavə edin */
+    }
+
+    .sag {
+        flex: 1 1 100%; /* Sağ tərəf də tam genişlikdə olsun */
+        padding: 10px;
+    }
+
+    /* PDF görüntüsünü mobildə uyğunlaşdırma */
+    embed {
+        width: 100%; /* PDF-in eni tam olsun */
+        height: 500px; /* Mobil cihazda hündürlük */
+    }
 }
